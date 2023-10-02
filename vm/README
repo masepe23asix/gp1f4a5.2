@@ -1,0 +1,12 @@
+ Com utilitzar el fitxer Vagrantfile?
+	•vagrant up: Per iniciar la máquina
+	•vagrant ssh: Per conectarse a la máquina
+	•exit: Per sortir de la máquina
+	•vagrant halt: Per aturar la máquina
+	•vagrant destroy: Per eliminar la máquina
+
+On es troben els fitxers amb els codis php?
+	•Es troben a la carpeta codis
+
+Com accedir a l'aplicació web?
+	•Fent servir el navegador web podem accedir a l'aplicacio utilitzant el localhost

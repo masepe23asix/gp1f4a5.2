@@ -1,0 +1,24 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bullseye64"
+  config.vm.hostname = "masepe.fjeclot.net"
+  config.vm.provider "virtualbox" do |v|
+    # v.gui = true
+    v.name = "masepe"
+    v.memory = 2048
+    v.cpus = 2
+    v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']     
+  end
+
+  config.vm.network "forwarded_port", guest: 80, host: 8000
+  config.vm.network "forwarded_port", guest: 443, host: 8443
+  config.vm.network "public_network", type: "dhcp", bridge: "Intel(R) Wireless-AC 9560 160MHz"
+  
+  config.vm.synced_folder "A:/Jesuites Treballs/Cicle Superior/3r any ASIX/GP1/projectes/gp1f4a5.2/codi", "/var/www/html"
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update -y
+    sudo apt-get install -y aptitude net-tools apache2 apache2-doc libapache2-mod-php php7.4 mariadb-server mariadb-client php7.4-mysql
+    sudo apt-get install -y composer  
+SHELL
+
+end
